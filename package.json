@@ -1,0 +1,25 @@
+{
+  "name": "music-practice-manager",
+  "version": "1.0.0",
+  "description": "A management application for storing and sharing meta information, pdfs, links, and practice times for music groups",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "bower":"bower"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbleds/music-practice-manager.git"
+  },
+  "author": "Benjamin Bledsoe <bledsoedesigns@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bbleds/music-practice-manager/issues"
+  },
+  "homepage": "https://github.com/bbleds/music-practice-manager#readme",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "express": "^4.13.4"
+  }
+}
