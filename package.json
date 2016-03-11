@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "bower":"bower"
+    "dev": "nodemon server.js",
+    "bower": "bower"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,8 @@
   "homepage": "https://github.com/bbleds/music-practice-manager#readme",
   "dependencies": {
     "bower": "^1.7.7",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "nodemon": "^1.9.1",
+    "path": "^0.12.7"
   }
 }
