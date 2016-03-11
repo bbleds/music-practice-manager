@@ -17,7 +17,7 @@ app.get("/", (req, res) =>{
   res.sendFile('public/html/index.html' , { root : __dirname});
 });
 
-app.get("/backend", (req, res) =>{
+app.get("/main", (req, res) =>{
   res.sendFile('public/html/main-backend.html' , { root : __dirname});
 });
 
