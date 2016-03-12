@@ -17,7 +17,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.get("/", (req, res) =>{
   res.sendFile('public/html/index.html' , { root : __dirname});
 });
-// main back-end login
+// main back-end after login
+app.get("/main", (req, res) =>{
+  res.sendFile('public/html/main-backend.html' , { root : __dirname});
+});
+// single organization manager page
 app.get("/main", (req, res) =>{
   res.sendFile('public/html/main-backend.html' , { root : __dirname});
 });
