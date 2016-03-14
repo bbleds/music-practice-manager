@@ -14,6 +14,10 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 			url: '/indivorg',
 			templateUrl: 'html/partials/singleOrganization.html'
 		})
+		.state('singlepractice', {
+			url: '/singlepractice',
+			templateUrl: 'html/partials/singlepractice.html'
+		})
 	//if we load in erroneous route, go  back to base/catch-all route
 	$urlRouterProvider.otherwise('/');
 });
