@@ -20,10 +20,11 @@
   },
   "homepage": "https://github.com/bbleds/music-practice-manager#readme",
   "dependencies": {
+    "angular-ui-router": "^0.2.18",
     "bower": "^1.7.7",
     "express": "^4.13.4",
+    "knex": "^0.10.0",
     "nodemon": "^1.9.1",
-    "path": "^0.12.7",
-    "angular-ui-router": "^0.2.18"
+    "path": "^0.12.7"
   }
 }
