@@ -10,6 +10,10 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 			url: '/',
 			templateUrl: 'html/partials/main.html'
 		})
+		.state('indivorg', {
+			url: '/indivorg',
+			templateUrl: 'html/partials/singleOrganization.html'
+		})
 	//if we load in erroneous route, go  back to base/catch-all route
 	$urlRouterProvider.otherwise('/');
 });

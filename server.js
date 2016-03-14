@@ -21,10 +21,6 @@ app.get("/", (req, res) =>{
 app.get("/main", (req, res) =>{
   res.sendFile('public/html/main-backend.html' , { root : __dirname});
 });
-// single organization manager page
-app.get("/main", (req, res) =>{
-  res.sendFile('public/html/main-backend.html' , { root : __dirname});
-});
 
 
 // spin up app
