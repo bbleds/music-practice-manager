@@ -30,7 +30,9 @@ app.get("/main", (req, res) =>{
 });
 // ----------- Api Endpoints
 app.get("/api/users", (req, res)=>{
-  res.send("yas");
+  knex.select().table("users").then((data) => {
+    res.send(data);
+  });
 });
 
 
