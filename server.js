@@ -4,19 +4,17 @@
 const express = require("express");
 const app = express();
 const path =  require("path");
-const knex =  require("knex");
+const knex = require("./knexConfig.js");
+
+
+knex.select().table('users').then((data)=> {
+  console.log("weeel then ");
+  console.log(data);
+});
 
 // -------------  envrionemt variables
 const PORT = process.env.PORT || 3000;
 
-// configure knex
-const knex = require('knex')({
-  client: 'postgresql',
-  connection: {
-    host     : '127.0.0.1',
-    database : 'MPM'
-  }
-});
 
 //use public directory for static files
 app.use(express.static(path.join(__dirname, '/public')));
