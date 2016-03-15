@@ -5,12 +5,8 @@ const express = require("express");
 const app = express();
 const path =  require("path");
 const knex = require("./knexConfig.js");
+const routes = require("./routes");
 
-
-knex.select().table('users').then((data)=> {
-  console.log("weeel then ");
-  console.log(data);
-});
 
 // -------------  envrionemt variables
 const PORT = process.env.PORT || 3000;
@@ -20,20 +16,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, '/public')));
 
 // ---------------------- Routes
-// index route
-app.get("/", (req, res) =>{
-  res.sendFile('public/html/index.html' , { root : __dirname});
-});
-// main back-end after login
-app.get("/main", (req, res) =>{
-  res.sendFile('public/html/main-backend.html' , { root : __dirname});
-});
-// ----------- Api Endpoints
-app.get("/api/users", (req, res)=>{
-  knex.select().table("users").then((data) => {
-    res.send(data);
-  });
-});
+app.use(routes);
+
 
 
 
