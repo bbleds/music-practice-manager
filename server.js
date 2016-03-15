@@ -28,6 +28,11 @@ app.get("/", (req, res) =>{
 app.get("/main", (req, res) =>{
   res.sendFile('public/html/main-backend.html' , { root : __dirname});
 });
+// ----------- Api Endpoints
+app.get("/api/users", (req, res)=>{
+  res.send("yas");
+});
+
 
 
 // spin up app
