@@ -11,7 +11,7 @@ const exportObject = {};
 exportObject.registerUser = (req, res) => {
   const errorMessage = {
     "status": "There was an error with your registration. This email may exist or there may have been an error with your request, please try again!"
-  }
+  };
 
   bcrypt.hash(req.body.registerPassword, BCRYPT_DIFFICULTY, (err, hash) => {
       if (err){
