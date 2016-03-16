@@ -21,10 +21,17 @@
   "homepage": "https://github.com/bbleds/music-practice-manager#readme",
   "dependencies": {
     "angular-ui-router": "^0.2.18",
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.15.0",
     "bower": "^1.7.7",
+    "connect-redis": "^3.0.2",
+    "const": "^1.0.0",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "knex": "^0.10.0",
     "nodemon": "^1.9.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7"
   }
 }

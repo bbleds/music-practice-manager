@@ -8,7 +8,6 @@ const path = require('path');
 router.get("/", (req, res) =>{
   res.sendFile(path.resolve('public/html/index.html'));
 });
-
 // main back-end after login
 router.get("/main", (req, res) =>{
   res.sendFile(path.resolve('public/html/main-backend.html'));
@@ -16,6 +15,8 @@ router.get("/main", (req, res) =>{
 
 // Api endpoints
 router.use(require("./api"));
+// login and register
+router.use(require("./auth"));
 
 
 module.exports = router;

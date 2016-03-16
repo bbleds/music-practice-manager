@@ -39,13 +39,45 @@
           </div><!--/.container-fluid -->
         </nav>
 
+        <p id="statusMessage"></p>
         <div  id="loginRegisterForm" class="jumbotron">
-          <input class="form-control" type="email" name="loginEmail" placeholder="Email" />
-          <input class="form-control" type="password" name="loginPassword" placeholder="Password" />
+          <input id="loginEmail" class="form-control" type="email" name="loginEmail" placeholder="Email" />
+          <input  id="loginPassword" class="form-control" type="password" name="loginPassword" placeholder="Password" />
           <button class="btn btn-primary">Login</button>
+          <button id="registerButton" class="btn btn-primary">Register</button>
         </div>
+
+        <!-- Modal -->
+      <div id="registerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Welcome! Register Below.</h4>
+            </div>
+            <form id="registerForm" action='/register' method="POST" onsubmit="event.preventDefault();">
+              <div class="modal-body">
+                  <input id="registerEmail" class="form-control" placeholder="Email" type="email" name="registerEmail"/>
+                  <input class="form-control" placeholder="First Name" type="text" name="registerFirstName"/>
+                  <input class="form-control" placeholder="Last Name" type="text" name="registerLastName"/>
+                  <input class="form-control" placeholder="Password" type="password" name="registerPassword"/>
+                  <input class="form-control" placeholder="Confirm Password" type="password" name="registerConfirmPassword"/>
+              </div>
+              <div class="modal-footer">
+                <button id="registerSubmit" class="btn btn-default"> Sign Me Up!</button>
+              </div>
+          </form>
+          </div>
+
+        </div>
+      </div>
+
+
         <!-- dependencies -->
         <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
         <script src="lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../javascripts/registrationHandler.js"></script>
   </body>
 </html>
