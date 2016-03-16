@@ -10,7 +10,7 @@ $("#loginButton").click(
       console.log(window.location.pathname = "/main");
       },
       error: function (jXHR, textStatus, errorThrown) {
-        alert(errorThrown);
+        console.log("there was an error with that request");
       }
     });
   }

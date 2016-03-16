@@ -26,6 +26,8 @@ passport.use("local", new LocalStrategy({
           // if login is valid
           if(valid){
             return done(null, {"userId" : data[0]._id});
+          } else {
+            return done(null, false)
           }
 
 
