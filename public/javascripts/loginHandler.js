@@ -5,9 +5,9 @@ $("#loginButton").click(
     $.ajax({
       url : $("#loginForm").attr('action'),
       type: "POST",
-      data: $("#registerForm").serialize(),
+      data: $("#loginForm").serialize(),
       success: function (data) {
-      console.log(data);
+      console.log(window.location.pathname = "/main");
       },
       error: function (jXHR, textStatus, errorThrown) {
         alert(errorThrown);

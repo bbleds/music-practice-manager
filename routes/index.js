@@ -6,11 +6,21 @@ const path = require('path');
 
 // index route
 router.get("/", (req, res) =>{
-  res.sendFile(path.resolve('public/html/index.html'));
+  if(req.session.passport){
+    console.log(req.session.passport);
+    res.redirect("/main");
+  } else {
+    console.log("no passport exists");
+    res.sendFile(path.resolve('public/html/index.html'));
+  }
 });
 // main back-end after login
 router.get("/main", (req, res) =>{
-  res.sendFile(path.resolve('public/html/main-backend.html'));
+  if(req.session.passport){
+    res.sendFile(path.resolve('public/html/main-backend.html'));
+  } else {
+    res.redirect("/");
+  }
 });
 
 // Api endpoints

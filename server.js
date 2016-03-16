@@ -15,12 +15,14 @@ const routes = require("./routes");
 
 
 // -------------  envrionemt variables
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const SESSION_SECRET = process.env.SESSION_SECRET || "secret";
 
 
 // ------------- Middleware
 // redis session config
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(session({
   secret: SESSION_SECRET,
   store: new RedisStore()
