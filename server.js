@@ -29,6 +29,7 @@ app.use(session({
 }));
 // body parser config
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //use public directory for static files
 app.use(express.static(path.join(__dirname, '/public')));

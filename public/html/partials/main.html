@@ -1,7 +1,7 @@
 <div class="container-fluid" ng-controller="mainCtrl as main">
   <div class="row">
     <div class="col-md-12">
-      <button class="btn btn-lg">+</button>
+      <button class="btn btn-lg" data-toggle="modal" data-target="#addOrganizationModal">+</button>
       <div class="jumbotron">
         <h1>Organization Name</h1>
         <p>Nibh sadipscing no nam, an mei posse erant philosophia.
@@ -11,6 +11,29 @@
           Dolor constituto inciderint id mea. Eu eos unum errem dictas.</p>
           <button class="btn btn-lg btn-primary">Manage</button>
       </div>
+    </div>
+  </div>
+
+  <!-- addOrganization modal -->
+  <div id="addOrganizationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add new organization</h4>
+        </div>
+          <div class="modal-body">
+              <input id="OrganizationName" ng-model="main.organizationName" class="form-control" placeholder="Organization Name" type="text" name="organizationName"/>
+              <input id="OrganizationAbreviation" ng-model="main.organizationAbrev" class="form-control" placeholder="Organization abbreviation" type="text" name="organizationName"/>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" ng-click="main.addOrganization(main.organizationName, main.organizationAbrev)" data-dismiss="modal"> Add</button>
+          </div>
+      </form>
+      </div>
+
     </div>
   </div>
 
