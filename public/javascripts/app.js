@@ -11,7 +11,7 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 			templateUrl: 'html/partials/main.html'
 		})
 		.state('indivorg', {
-			url: '/indivorg',
+			url: '/org/:abrev',
 			templateUrl: 'html/partials/singleOrganization.html'
 		})
 		.state('singlepractice', {
