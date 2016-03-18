@@ -27,7 +27,7 @@ exportObject.addOrganization = (req, res) => {
       knex("organizations").insert({"name": `${req.body.orgName}`, "user_id": `${req.session.passport.user.userId}`,
       "orgabbrev": `${req.body.orgAbrev}`, "orgdesc": `${req.body.orgDesc}`})
       .then((data) => {
-        console.log(data);
+        res.send(data);
       })
       .catch((err)=>{
         console.log(err);
