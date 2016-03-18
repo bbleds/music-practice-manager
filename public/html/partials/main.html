@@ -4,11 +4,11 @@
       <button class="btn btn-lg" data-toggle="modal" data-target="#addOrganizationModal">+</button>
       <div class="jumbotron" ng-repeat="organization in main.userOrgs">
         <h3>{{organization.name}}</h3>
+        <h3>{{organization.orgdesc}}</h3>
         <button class="btn btn-lg btn-primary">Manage</button>
         </div>
       </div>
     </div>
-  </div>
 
   <!-- addOrganization modal -->
   <div id="addOrganizationModal" class="modal fade" role="dialog">
@@ -22,10 +22,11 @@
         </div>
           <div class="modal-body">
               <input id="OrganizationName" ng-model="main.organizationName" class="form-control" placeholder="Organization Name" type="text" name="organizationName"/>
-              <input id="OrganizationAbreviation" ng-model="main.organizationAbrev" class="form-control" placeholder="Organization abbreviation" type="text" name="organizationName"/>
+              <input id="OrganizationAbreviation" ng-model="main.organizationAbrev" class="form-control" placeholder="Organization abbreviation" type="text" name="organizationAbrev"/>
+              <input id="OrganizationDesc" ng-model="main.organizationDesc" class="form-control" placeholder="Organization Description" type="text" name="organizationDesc"/>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-default" ng-click="main.addOrganization(main.organizationName, main.organizationAbrev)" data-dismiss="modal"> Add</button>
+            <button class="btn btn-default" ng-click="main.addOrganization(main.organizationName, main.organizationAbrev,main.organizationDesc )" data-dismiss="modal"> Add</button>
           </div>
       </form>
       </div>

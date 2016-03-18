@@ -24,7 +24,8 @@ exportObject.addOrganization = (req, res) => {
   .then((data) => {
     console.log(data);
     if(_.filter(data, {"orgabbrev": `${req.body.orgAbrev}`}).length < 1 && _.filter(data, {"name": `${req.body.orgName}`}).length < 1){
-      knex("organizations").insert({"name": `${req.body.orgName}`, "user_id": `${req.session.passport.user.userId}`, "orgabbrev": `${req.body.orgAbrev}`})
+      knex("organizations").insert({"name": `${req.body.orgName}`, "user_id": `${req.session.passport.user.userId}`,
+      "orgabbrev": `${req.body.orgAbrev}`, "orgdesc": `${req.body.orgDesc}`})
       .then((data) => {
         console.log(data);
       })

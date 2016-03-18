@@ -5,13 +5,15 @@ app.controller("mainCtrl", ["$http", function($http){
 
     self.world = "hello";
 
-    self.addOrganization = (name, abrev) => {
+    self.addOrganization = (name, abrev, desc) => {
       console.log("name is ");
       console.log(name);
       console.log(abrev);
+      console.log(desc);
       const data = {
         "orgName" : name.toLowerCase(),
-        "orgAbrev": abrev.toLowerCase()
+        "orgAbrev": abrev.toLowerCase(),
+        "orgDesc": desc
       };
       const stringedData = JSON.stringify(data);
       console.log(stringedData);
