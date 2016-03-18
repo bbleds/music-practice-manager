@@ -6,7 +6,7 @@ const apiCtrl = require("../controllers/api");
 
 // ----------- Api Endpoints
 router.get("/api/users", apiCtrl.getUserData);
-// adding organizations
+router.get("/api/organization", apiCtrl.getUserOrgs)
 router.post("/api/organization", apiCtrl.addOrganization);
 
 

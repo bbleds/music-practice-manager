@@ -2,14 +2,10 @@
   <div class="row">
     <div class="col-md-12">
       <button class="btn btn-lg" data-toggle="modal" data-target="#addOrganizationModal">+</button>
-      <div class="jumbotron">
-        <h1>Organization Name</h1>
-        <p>Nibh sadipscing no nam, an mei posse erant philosophia.
-          Assum persequeris vix ex, at sed affert nullam, ea cum falli efficiendi.
-          Ne est luptatum tacimates, pro assum deleniti percipit an, ex pri meliore officiis.
-          Vim assueverit signiferumque ad, senserit consequat no sea, in feugiat mandamus ius.
-          Dolor constituto inciderint id mea. Eu eos unum errem dictas.</p>
-          <button class="btn btn-lg btn-primary">Manage</button>
+      <div class="jumbotron" ng-repeat="organization in main.userOrgs">
+        <h3>{{organization.name}}</h3>
+        <button class="btn btn-lg btn-primary">Manage</button>
+        </div>
       </div>
     </div>
   </div>

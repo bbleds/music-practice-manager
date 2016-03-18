@@ -12,12 +12,18 @@ exportObject.getUserData = (req, res) => {
   });
 };
 
+exportObject.getUserOrgs = (req, res) => {
+  knex.select().table("organizations").where({user_id: `${req.session.passport.user.userId}`}).then((data) => {
+    res.send(data);
+  });
+};
+
 exportObject.addOrganization = (req, res) => {
   // get data from db, if organization abbreviation already exists, send error message to user
-  knex.select("orgabbrev ").table("organizations")
+  knex.select("orgabbrev", "name").table("organizations")
   .then((data) => {
     console.log(data);
-    if(_.filter(data, {"orgabbrev": `${req.body.orgAbrev}`}).length < 1){
+    if(_.filter(data, {"orgabbrev": `${req.body.orgAbrev}`}).length < 1 && _.filter(data, {"name": `${req.body.orgName}`}).length < 1){
       knex("organizations").insert({"name": `${req.body.orgName}`, "user_id": `${req.session.passport.user.userId}`, "orgabbrev": `${req.body.orgAbrev}`})
       .then((data) => {
         console.log(data);
@@ -27,7 +33,7 @@ exportObject.addOrganization = (req, res) => {
       });
     } else {
       console.log("nope");
-      res.send("This already exists")
+      res.send("This already exists");
     }
 
   });
