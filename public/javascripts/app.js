@@ -1,6 +1,6 @@
 "use strict";
 
-const app = angular.module("music-practice-manager", ["ui.router"]);
+const app = angular.module("music-practice-manager", ["ui.router", "ngLodash"]);
 
 //configure app with ui-router
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
