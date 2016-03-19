@@ -4,11 +4,33 @@
       <a href="#/{{single.orgId}}/addpractice"><button class="btn btn-lg">+</button></a>
       <div class="jumbotron" ng-repeat="practice in single.currentPractices">
         <h1>{{practice.title}}</h1>
-        <button class="btn btn-lg btn-primary" ng-click="single.deletePractice(practice)">Delete</button>
+        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#confirmPracticeDeleteModal" ng-click="single.setSelectedPractice(practice)">Delete</button>
         <p>{{practice.description}}</p>
           <button class="btn btn-lg btn-primary">Edit</button>
           <button class="btn btn-lg btn-primary">View</button>
       </div>
+    </div>
+  </div>
+
+  <div id="confirmPracticeDeleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Are you sure you wish to delete {{single.selectedPractice.title}}?</h4>
+        </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-default" ng-click="single.deletePractice()" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-default">No</button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+      </form>
+      </div>
+
     </div>
   </div>
 

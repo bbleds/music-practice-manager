@@ -7,15 +7,20 @@ app.controller("singleOrgCtrl", ["$http", "$state", "$stateParams","lodash", fun
     self.currentPractices = data.data;
   });
 
-  self.deletePractice = (practice)=>{
+  self.setSelectedPractice = (practice) => {
+    console.log(practice);
+    self.selectedPractice = practice;
+  };
+
+  self.deletePractice = ()=>{
     const remainingPractices =[];
     $http({
       url: "/api/practice",
       method: "DELETE",
-      headers: {delparams: JSON.stringify(practice)}
+      headers: {delparams: JSON.stringify(self.selectedPractice)}
     })
     self.currentPractices.map((item)=>{
-      if(item.title !== practice.title){
+      if(item.title !== self.selectedPractice.title){
         remainingPractices.push(item);
       }
     })
