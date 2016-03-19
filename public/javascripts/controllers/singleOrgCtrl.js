@@ -3,6 +3,10 @@ app.controller("singleOrgCtrl", ["$http", "$stateParams", function($http, $state
   console.log($stateParams);
   const self = this;
   self.orgId = $stateParams.orgId;
+  $http.get(`/api/${self.orgId}/practice`)
+  .then((data) =>{
+    self.currentPractices = data.data;
+  });
   // populate page by state params
   // get from api
     // where user id is req.session.passport.user.userId

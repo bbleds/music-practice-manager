@@ -18,6 +18,12 @@ exportObject.getUserOrgs = (req, res) => {
   });
 };
 
+exportObject.getOrgEvents = (req, res) => {
+  knex.select().table("events").where({user_id: req.session.passport.user.userId, org_id: req.params.orgId}).then((data) => {
+    res.send(data);
+  });
+};
+
 exportObject.addOrganization = (req, res) => {
   // get data from db, if organization abbreviation already exists, send error message to user
   knex.select("orgabbrev", "name").table("organizations")
@@ -47,7 +53,7 @@ exportObject.addPractice = (req, res) => {
   "org_id": req.body.orgId})
   .then((data)=>{
     console.log(data);
-    res.send(data)
+    res.send(data);
   }).catch((err)=>{
     console.log(err);
   });
