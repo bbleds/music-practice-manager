@@ -11,12 +11,16 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 			templateUrl: 'html/partials/main.html'
 		})
 		.state('indivorg', {
-			url: '/org/:abrev',
+			url: '/org/:orgId/:abrev',
 			templateUrl: 'html/partials/singleOrganization.html'
 		})
 		.state('singlepractice', {
 			url: '/singlepractice',
 			templateUrl: 'html/partials/singlepractice.html'
+		})
+		.state('addPractice', {
+			url: '/:orgId/addpractice',
+			templateUrl: 'html/partials/addPractice.html'
 		});
 	//if we load in erroneous route, go  back to base/catch-all route
 	$urlRouterProvider.otherwise('/');

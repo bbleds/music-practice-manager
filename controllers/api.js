@@ -36,9 +36,21 @@ exportObject.addOrganization = (req, res) => {
       console.log("nope");
       res.send("This already exists");
     }
-
   });
+};
 
+exportObject.addPractice = (req, res) => {
+  console.log(req.body);
+  // save data to db with knex
+  knex("events").insert({"title": req.body.practiceTitle,
+  "description": req.body.practiceDesc, "user_id": req.session.passport.user.userId,
+  "org_id": req.body.orgId})
+  .then((data)=>{
+    console.log(data);
+    res.send(data)
+  }).catch((err)=>{
+    console.log(err);
+  });
 };
 
 
