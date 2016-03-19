@@ -4,7 +4,7 @@
       <a href="#/{{single.orgId}}/addpractice"><button class="btn btn-lg">+</button></a>
       <div class="jumbotron" ng-repeat="practice in single.currentPractices">
         <h1>{{practice.title}}</h1>
-        <button class="btn btn-lg btn-primary">Delete</button>
+        <button class="btn btn-lg btn-primary" ng-click="single.deletePractice(practice)">Delete</button>
         <p>{{practice.description}}</p>
           <button class="btn btn-lg btn-primary">Edit</button>
           <button class="btn btn-lg btn-primary">View</button>

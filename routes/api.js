@@ -10,6 +10,7 @@ router.get("/api/organization", apiCtrl.getUserOrgs);
 router.post("/api/organization", apiCtrl.addOrganization);
 router.get("/api/:orgId/practice", apiCtrl.getOrgEvents)
 router.post("/api/practice", apiCtrl.addPractice);
+router.delete("/api/practice", apiCtrl.deletePractice);
 
 
 module.exports = router;

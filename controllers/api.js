@@ -59,5 +59,26 @@ exportObject.addPractice = (req, res) => {
   });
 };
 
+exportObject.deletePractice = (req,res) =>{
+
+  // const example = JSON.parse(req.headers);
+  const delParams = JSON.parse(req.headers.delparams);
+  knex("events")
+  .where(
+    {
+      "title": delParams.title,
+      "user_id": req.session.passport.user.userId,
+      "org_id": delParams.org_id
+    }
+  )
+  .del()
+  .limit(1)
+  .then((data) => {
+    console.log(data);
+  }).catch((err)=>{
+    console.log(err);
+  });
+};
+
 
 module.exports = exportObject;
