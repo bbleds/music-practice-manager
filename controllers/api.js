@@ -59,6 +59,16 @@ exportObject.addPractice = (req, res) => {
   });
 };
 
+exportObject.getPractice = (req, res) => {
+  console.log(req.params);
+  knex("events").select().where({"event_id":parseInt(req.params.eventId), "org_id":parseInt(req.params.orgId)}).limit(1)
+  .then((data)=>{
+    res.send(data);
+  }).catch((err)=>{
+    if (err) throw err;
+  });
+};
+
 exportObject.deletePractice = (req,res) =>{
 
   // const example = JSON.parse(req.headers);

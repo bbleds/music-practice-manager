@@ -21,6 +21,10 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 		.state('addPractice', {
 			url: '/:orgId/addpractice',
 			templateUrl: 'html/partials/addPractice.html'
+		})
+		.state('editPractice', {
+			url: '/:orgId/addpractice/:eventId',
+			templateUrl: 'html/partials/addPractice.html'
 		});
 	//if we load in erroneous route, go  back to base/catch-all route
 	$urlRouterProvider.otherwise('/');
