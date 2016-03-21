@@ -4,8 +4,8 @@
       <div class="jumbotron">
         <input class="form-control" ng-model="add.title" placeholder="Practice Title" type="text" name="practiceTitle"/>
         <input class="form-control" ng-model="add.description" placeholder="Practice Description" type="text" name="practiceDescription"/>
-        <button type="button" class="btn btn-primary" ng-hide="self.editMode">Save Edited Practice</button>
-        <button type="button" class="btn btn-primary" ng-show="self.editMode" ng-click="add.addPractice(self.title, self.description)">Save Practice</button>
+        <button type="button" class="btn btn-primary" ng-show="add.editMode" ng-click="add.editPractice(add.title, add.description)">Save Edited Practice</button>
+        <button type="button" class="btn btn-primary" ng-hide="add.editMode" ng-click="add.addPractice(add.title,add.description)">Save Practice</button>
       </div>
 
       <button class="btn btn-primary">Add Song</button>

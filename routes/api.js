@@ -11,6 +11,7 @@ router.post("/api/organization", apiCtrl.addOrganization);
 router.get("/api/:orgId/practice", apiCtrl.getOrgEvents);
 router.post("/api/practice", apiCtrl.addPractice);
 router.get("/api/:orgId/practice/:eventId", apiCtrl.getPractice);
+router.post("/api/:orgId/practice/:eventId", apiCtrl.editPractice);
 router.delete("/api/practice", apiCtrl.deletePractice);
 
 
