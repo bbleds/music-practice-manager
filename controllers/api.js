@@ -45,6 +45,7 @@ exportObject.addOrganization = (req, res) => {
   });
 };
 
+// add practice and return new practice details to client
 exportObject.addPractice = (req, res) => {
   console.log(req.body);
   // save data to db with knex
@@ -52,8 +53,15 @@ exportObject.addPractice = (req, res) => {
   "description": req.body.practiceDesc, "user_id": req.session.passport.user.userId,
   "org_id": req.body.orgId})
   .then((data)=>{
-    console.log(data);
-    res.send(data);
+    knex("events").select().where({"title": req.body.practiceTitle,
+    "description": req.body.practiceDesc, "user_id": req.session.passport.user.userId,
+    "org_id": req.body.orgId}).limit(1)
+    .then((newData)=>{
+      console.log(newData);
+      res.send(newData);
+    }).catch((err)=>{
+      if (err) throw err;
+    });
   }).catch((err)=>{
     console.log(err);
   });

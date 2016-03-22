@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($http, $stateParams, $state){
   const self = this;
@@ -19,7 +19,9 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     };
     $http.post('/api/practice', data)
     .then((data)=>{
-      console.log(data);
+      const orgId = data.data[0].org_id;
+      const eventId = data.data[0].event_id;
+      window.location = `${window.location.hash}/${eventId}`;
     });
   };
   self.editPractice = (title, description) => {
