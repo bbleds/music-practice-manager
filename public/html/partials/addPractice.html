@@ -10,8 +10,8 @@
       <div class="jumbotron" ng-repeat="song in add.currentSongs">
         <h2>{{song.title}}</h2>
         <h3>{{song.song_info}}</h3>
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default">Delete</button>
+        <button type="button" class="btn btn-default" ng-click="add.editSong(song)">Edit</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmSongDeleteModal" ng-click="add.selectSong(song)">Delete</button>
         <a href="{{song.link}}" target="_blank"><button class="btn btn-primary">View Song</button></a>
         <a href="{{song.pdf_ref}}" target="_blank"><button class="btn btn-primary">View Song pdf</button></a>
       </div>
@@ -24,6 +24,28 @@
         <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.songPdf" name="songPdf"/>
         <button type="button" class="btn btn-primary" ng-click="add.saveSong(add.songTitle,add.songLink,add.songPdf,add.songInfo)">Save Song</button>
       </div>
+    </div>
+  </div>
+
+  <div id="confirmSongDeleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Are you sure you wish to delete {{add.selectedSong.title}}?</h4>
+        </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-default" ng-click="add.deleteSong(add.selectedSong)" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-default">No</button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+      </form>
+      </div>
+
     </div>
   </div>
 

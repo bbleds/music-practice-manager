@@ -55,6 +55,24 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     $http.post(`/api/song`, data)
     .then((data)=>{
       console.log(data);
+      self.currentSongs.push(data.data[0]);
+      self.songTitle="";
+      self.songInfo="";
+      self.songLink="";
+      self.songPdf="";
+    });
+  };
+  self.selectSong = (song)=>{
+    self.selectedSong = song;
+  };
+  self.editSong = (song)=>{
+    console.log(song);
+  };
+  self.deleteSong = (song)=>{
+    $http({
+      url: "/api/song",
+      method: "DELETE",
+      headers: {delparams: JSON.stringify(song)}
     });
   };
 

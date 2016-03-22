@@ -144,7 +144,36 @@ exportObject.addSong = (req,res)=>{
     "event_id": req.body.event_id
   }).limit(1)
   .then((data)=>{
-    res.send(data);
+    knex("songs").select()
+    .where({
+      "title": req.body.title,
+      "event_id": req.body.event_id
+    })
+    .limit(1)
+    .then((songData)=>{
+      res.send(songData);
+    })
+    .catch((err)=>{
+      if(err) throw err;
+    });
+  })
+  .catch((err)=>{
+    if(err) throw err;
+  });
+};
+
+exportObject.deleteSong = (req,res)=>{
+const delParams = JSON.parse(req.headers.delparams);
+  knex("songs")
+  .where({
+    "title":delParams.title,
+    "event_id": delParams.event_id,
+    "song_id": delParams.song_id
+  })
+  .del()
+  .limit(1)
+  .then((data)=>{
+    console.log(data);
   })
   .catch((err)=>{
     if(err) throw err;
