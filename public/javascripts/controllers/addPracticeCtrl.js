@@ -74,6 +74,14 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
       method: "DELETE",
       headers: {delparams: JSON.stringify(song)}
     });
+    const remainingSongs=[];
+    self.currentSongs.map((item)=>{
+      if(item.title !== song.title){
+        remainingSongs.push(item);
+      }
+    });
+    self.currentSongs = remainingSongs;
+
   };
 
 

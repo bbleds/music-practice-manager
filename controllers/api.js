@@ -173,7 +173,7 @@ const delParams = JSON.parse(req.headers.delparams);
   .del()
   .limit(1)
   .then((data)=>{
-    console.log(data);
+    res.send(data)
   })
   .catch((err)=>{
     if(err) throw err;
