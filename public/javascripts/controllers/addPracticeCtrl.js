@@ -44,11 +44,12 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     });
   };
 
-  self.saveSong = (title,link,pdf) =>{
+  self.saveSong = (title,link,pdf,info) =>{
     const data = {
       "title": title,
       "link": link,
       "pdf": pdf,
+      "info": info,
       "event_id": $state.params.eventId
     };
     $http.post(`/api/song`, data)

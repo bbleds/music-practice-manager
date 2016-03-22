@@ -140,6 +140,7 @@ exportObject.addSong = (req,res)=>{
     "title": req.body.title,
     "link": req.body.link,
     "pdf_ref": req.body.pdf,
+    "song_info": req.body.info,
     "event_id": req.body.event_id
   }).limit(1)
   .then((data)=>{
