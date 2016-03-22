@@ -119,5 +119,36 @@ exportObject.deletePractice = (req,res) =>{
   });
 };
 
+exportObject.getSongs = (req,res)=>{
+  console.log(req.params);
+  knex("songs").select()
+  .where({
+    "event_id": req.params.eventId
+  })
+  .then((data)=>{
+    res.send(data)
+  })
+  .catch((err)=>{
+    if(err) throw err;
+  })
+};
+
+exportObject.addSong = (req,res)=>{
+  console.log(req.body);
+  knex("songs")
+  .insert({
+    "title": req.body.title,
+    "link": req.body.link,
+    "pdf_ref": req.body.pdf,
+    "event_id": req.body.event_id
+  }).limit(1)
+  .then((data)=>{
+    res.send(data);
+  })
+  .catch((err)=>{
+    if(err) throw err;
+  });
+};
+
 
 module.exports = exportObject;

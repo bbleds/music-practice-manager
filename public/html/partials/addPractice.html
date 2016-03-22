@@ -7,12 +7,18 @@
         <button type="button" class="btn btn-primary" ng-show="add.editMode" ng-click="add.editPractice(add.title, add.description)">Save Edited Practice</button>
         <button type="button" class="btn btn-primary" ng-hide="add.editMode" ng-click="add.addPractice(add.title,add.description)">Save Practice</button>
       </div>
+      <div class="jumbotron" ng-repeat="song in add.currentSongs">
+        <h2>{{song.title}}</h2>
+        <a href="{{song.link}}" target="_blank"><button class="btn btn-primary">View Song</button></a>
+        <a href="{{song.pdf_ref}}" target="_blank"><button class="btn btn-primary">View Song pdf</button></a>
+      </div>
 
       <button class="btn btn-primary">Add Song</button>
       <div class="jumbotron">
-        <input class="form-control" placeholder="Song Title" type="text" name="organizationName"/>
-        <input class="form-control" placeholder="Link To Song" type="text" name="organizationName"/>
-        <input class="form-control" placeholder="Link To Pdf" type="text" name="organizationName"/>
+        <input class="form-control" placeholder="Song Title" type="text" ng-model="add.songTitle" name="songTitle"/>
+        <input class="form-control" placeholder="Link To Song" type="text" ng-model="add.songLink" name="songLink"/>
+        <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.songPdf" name="songPdf"/>
+        <button type="button" class="btn btn-primary" ng-click="add.saveSong(add.songTitle,add.songLink,add.songPdf)">Save Song</button>
       </div>
     </div>
   </div>
