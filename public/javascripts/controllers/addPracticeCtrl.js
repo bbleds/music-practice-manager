@@ -14,7 +14,7 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     $http.get(`/api/song/${$state.params.eventId}`)
     .then((data)=>{
       self.currentSongs = data.data;
-    })
+    });
   }
   self.addPractice = (title, description) => {
     const data = {
@@ -54,7 +54,6 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     };
     $http.post(`/api/song`, data)
     .then((data)=>{
-      console.log(data);
       self.currentSongs.push(data.data[0]);
       self.songTitle="";
       self.songInfo="";
@@ -64,10 +63,36 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
   };
   self.selectSong = (song)=>{
     self.selectedSong = song;
+    self.editSongTitle = song.title;
+    self.editSongInfo = song.song_info;
+    self.editSongLink = song.link;
+    self.editSongPdf = song.pdf_ref;
   };
-  self.editSong = (song)=>{
-    console.log(song);
-  };
+  self.editSong = (title,info,link,pdf)=>{
+    const data = {
+      "title": title,
+      "link": link,
+      "pdf": pdf,
+      "info": info,
+      "song_id": self.selectedSong.song_id,
+      "event_id": $state.params.eventId
+    };
+    $http.put("/api/song", data)
+    const updatedSongs = [];
+    self.currentSongs.map((item)=>{
+      if(item.title === self.selectedSong.title && item.song_info === self.selectedSong.song_info){
+        item.title = title;
+        item.song_info = info;
+        item.link = link;
+        item.pdf_ref = pdf;
+        updatedSongs.push(item);
+      } else {
+        updatedSongs.push(item);
+      }
+    })
+    self.currentSongs = updatedSongs;
+
+  }
   self.deleteSong = (song)=>{
     $http({
       url: "/api/song",

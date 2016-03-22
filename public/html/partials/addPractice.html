@@ -10,7 +10,7 @@
       <div class="jumbotron" ng-repeat="song in add.currentSongs">
         <h2>{{song.title}}</h2>
         <h3>{{song.song_info}}</h3>
-        <button type="button" class="btn btn-default" ng-click="add.editSong(song)">Edit</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editSongModal" ng-click="add.selectSong(song)">Edit</button>
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmSongDeleteModal" ng-click="add.selectSong(song)">Delete</button>
         <a href="{{song.link}}" target="_blank"><button class="btn btn-primary">View Song</button></a>
         <a href="{{song.pdf_ref}}" target="_blank"><button class="btn btn-primary">View Song pdf</button></a>
@@ -42,6 +42,31 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+      </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="editSongModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Change Song Details</h4>
+        </div>
+          <div class="modal-body">
+            <input class="form-control" placeholder="Song Title" type="text" ng-model="add.editSongTitle" name="songTitle"/>
+            <input class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.editSongInfo" name="songInfo"/>
+            <input class="form-control" placeholder="Link To Song" type="text" ng-model="add.editSongLink" name="songLink"/>
+            <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.editSongPdf" name="songPdf"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="add.editSong(add.editSongTitle,add.editSongInfo,add.editSongLink,add.editSongPdf)" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default">Cancel</button>
           </div>
       </form>
       </div>

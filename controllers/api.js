@@ -78,7 +78,6 @@ exportObject.getPractice = (req, res) => {
 };
 
 exportObject.editPractice = (req, res) => {
-  console.log(req.body);
   knex("events").select()
   .where({
     "event_id":req.body.eventId,
@@ -131,6 +130,28 @@ exportObject.getSongs = (req,res)=>{
   .catch((err)=>{
     if(err) throw err;
   })
+};
+exportObject.updateSong = (req,res)=>{
+  console.log(req.body);
+  knex("songs").select()
+  .where({
+    "song_id": req.body.song_id,
+    "event_id": req.body.event_id
+  })
+  .update({
+    "title": req.body.title,
+    "link": req.body.link,
+    "pdf_ref": req.body.pdf,
+    "song_info": req.body.info
+  })
+  .limit(1)
+  .then((data)=>{
+    console.log("successful");
+    res.send(data);
+  })
+  .catch((err)=>{
+    if(err) throw err;
+  });
 };
 
 exportObject.addSong = (req,res)=>{
