@@ -18,7 +18,7 @@ app.controller("singleOrgCtrl", ["$http", "$state", "$stateParams","lodash", fun
       url: "/api/practice",
       method: "DELETE",
       headers: {delparams: JSON.stringify(self.selectedPractice)}
-    })
+    });
     self.currentPractices.map((item)=>{
       if(item.title !== self.selectedPractice.title){
         remainingPractices.push(item);

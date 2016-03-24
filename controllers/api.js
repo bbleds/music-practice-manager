@@ -45,6 +45,59 @@ exportObject.addOrganization = (req, res) => {
   });
 };
 
+exportObject.deleteOrganization = (req,res) => {
+  const orgData = JSON.parse(req.headers.delparams);
+  // get all events matching selected organization
+  knex("events")
+  .select()
+  .where({
+    "org_id": orgData.organization_id,
+    "user_id": req.session.passport.user.userId
+  })
+  .then((data)=>{
+    const eventId = data[0].event_id;
+    const orgId = data[0].org_id;
+    // handle other cases in an else
+    if(data.length > 0){
+      // delete songs associated with events
+      knex("songs").where({
+        "event_id": eventId
+      })
+      .del()
+      .then(()=>{
+        // delete events associated with organization
+        knex("events").where({
+          "org_id": orgId
+        })
+        .del()
+        .then(()=>{
+          // delete organization
+          knex("organizations").where({
+            "organization_id": orgId
+          })
+          .del()
+          .then(()=>{
+            console.log("successful");
+          })
+          .catch((err)=>{
+          if (err) throw err;
+          })
+        })
+        .catch((err)=>{
+          if (err) throw err;
+        })
+      })
+      .catch((err)=>{
+        if (err) throw err;
+      })
+
+    }
+
+
+    });
+  };
+
+
 // add practice and return new practice details to client
 exportObject.addPractice = (req, res) => {
   console.log(req.body);

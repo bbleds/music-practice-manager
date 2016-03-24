@@ -6,6 +6,7 @@
         <h3>{{organization.name}}</h3>
         <h3>{{organization.orgdesc}}</h3>
         <a href="#/org/{{organization.organization_id}}/{{organization.orgabbrev}}"><button class="btn btn-lg btn-primary">Manage</button></a>
+        <button type="button" class="btn btn-lg btn-primary" ng-click="main.selectOrg(organization)" data-target="#DeleteOrganizationModal" data-toggle="modal">Delete</button>
         </div>
       </div>
     </div>
@@ -27,6 +28,29 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-default" ng-click="main.addOrganization(main.organizationName, main.organizationAbrev,main.organizationDesc )" data-dismiss="modal"> Add</button>
+          </div>
+      </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- addOrganization modal -->
+  <div id="DeleteOrganizationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Remove Organization</h4>
+        </div>
+          <div class="modal-body">
+              <p> Are you sure you want to delete {{main.selectedOrg.name}}?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" ng-click="main.deleteOrg(main.selectedOrg)" data-dismiss="modal"> Yes</button>
+            <button class="btn btn-default" data-dismiss="modal"> Cancel</button>
           </div>
       </form>
       </div>
