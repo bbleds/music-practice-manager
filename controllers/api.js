@@ -18,6 +18,35 @@ exportObject.getUserOrgs = (req, res) => {
   });
 };
 
+exportObject.getNonUserOrgs = (req, res) => {
+  const organizationDetails ={};
+
+  console.log(req.params.orgAbbrev);
+  // get organization details
+  knex("organizations").select()
+  .where({
+    "orgabbrev": req.params.orgAbbrev
+  })
+  .limit(1)
+  .then((data)=>{
+    // set organization information to send
+    organizationDetails.orgDetails = data[0];
+
+    // Send all practices for organization
+    knex("events").select()
+    .where({
+      "org_id": organizationDetails.orgDetails.organization_id
+    })
+    .then((practices)=>{
+      // set practices key for organization
+      organizationDetails.practices = practices;
+      res.send(organizationDetails)
+    });
+
+  });
+
+};
+
 exportObject.getOrgEvents = (req, res) => {
   knex.select().table("events").where({user_id: req.session.passport.user.userId, org_id: req.params.orgId}).then((data) => {
     res.send(data);

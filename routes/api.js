@@ -7,6 +7,7 @@ const apiCtrl = require("../controllers/api");
 // ----------- Api Endpoints
 router.get("/api/users", apiCtrl.getUserData);
 router.get("/api/organization", apiCtrl.getUserOrgs);
+router.get("/api/organization/:orgAbbrev", apiCtrl.getNonUserOrgs);
 router.post("/api/organization", apiCtrl.addOrganization);
 router.delete("/api/organization", apiCtrl.deleteOrganization);
 router.get("/api/:orgId/practice", apiCtrl.getOrgEvents);

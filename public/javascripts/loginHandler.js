@@ -7,7 +7,7 @@ $("#loginButton").click(
       type: "POST",
       data: $("#loginForm").serialize(),
       success: function (data) {
-      console.log(window.location.pathname = "/main");
+      window.location.pathname = "/main";
       },
       error: function (jXHR, textStatus, errorThrown) {
         console.log("there was an error with that request");

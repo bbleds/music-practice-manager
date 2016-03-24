@@ -18,6 +18,10 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 			url: '/singlepractice',
 			templateUrl: 'html/partials/singlepractice.html'
 		})
+		.state('nonUserPractcie', {
+			url: '/organization/:orgAbbrev',
+			templateUrl: 'html/partials/nonUserPractice.html'
+		})
 		.state('addPractice', {
 			url: '/:orgId/addpractice',
 			templateUrl: 'html/partials/addPractice.html'
