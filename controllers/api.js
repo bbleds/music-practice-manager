@@ -55,10 +55,10 @@ exportObject.deleteOrganization = (req,res) => {
     "user_id": req.session.passport.user.userId
   })
   .then((data)=>{
-    const eventId = data[0].event_id;
-    const orgId = data[0].org_id;
     // handle other cases in an else
     if(data.length > 0){
+      const eventId = data[0].event_id;
+      const orgId = data[0].org_id;
       // delete songs associated with events
       knex("songs").where({
         "event_id": eventId
@@ -81,19 +81,28 @@ exportObject.deleteOrganization = (req,res) => {
           })
           .catch((err)=>{
           if (err) throw err;
-          })
+        });
         })
         .catch((err)=>{
           if (err) throw err;
-        })
+        });
       })
       .catch((err)=>{
         if (err) throw err;
+      });
+
+    } else {
+      knex("organizations").where({
+        "organization_id": orgData.organization_id
       })
-
+      .del()
+      .then(()=>{
+        console.log("successful");
+      })
+      .catch((err)=>{
+      if (err) throw err;
+    });
     }
-
-
     });
   };
 
