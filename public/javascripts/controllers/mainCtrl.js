@@ -28,7 +28,16 @@ app.controller("mainCtrl", ["$http", function($http){
         method: "DELETE",
         headers: {delparams: JSON.stringify(organization)}
       })
-      // remove organization from DOM
+      .then((data)=>{
+        // remove organization from DOM
+        const remainingOrgs = [];
+        self.userOrgs.map((item)=>{
+          if(item.organization_id !== organization.organization_id){
+            remainingOrgs.push(item)
+          }
+        })
+        self.userOrgs = remainingOrgs;
+      })
 
     };
 

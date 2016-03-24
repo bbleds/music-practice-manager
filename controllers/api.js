@@ -77,7 +77,7 @@ exportObject.deleteOrganization = (req,res) => {
           })
           .del()
           .then(()=>{
-            console.log("successful");
+            res.send({"status":"success"})
           })
           .catch((err)=>{
           if (err) throw err;
@@ -97,7 +97,7 @@ exportObject.deleteOrganization = (req,res) => {
       })
       .del()
       .then(()=>{
-        console.log("successful");
+        res.send({"status":"success"})
       })
       .catch((err)=>{
       if (err) throw err;
