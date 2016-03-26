@@ -57,12 +57,24 @@ exportObject.addOrganization = (req, res) => {
   // get data from db, if organization abbreviation already exists, send error message to user
   knex.select("orgabbrev", "name").table("organizations")
   .then((data) => {
-    console.log(data);
     if(_.filter(data, {"orgabbrev": `${req.body.orgAbrev}`}).length < 1 && _.filter(data, {"name": `${req.body.orgName}`}).length < 1){
       knex("organizations").insert({"name": `${req.body.orgName}`, "user_id": `${req.session.passport.user.userId}`,
       "orgabbrev": `${req.body.orgAbrev}`, "orgdesc": `${req.body.orgDesc}`})
-      .then((data) => {
-        res.send(data);
+      .then(() => {
+        // send new organization back to client
+        knex("organizations").select()
+        .where({
+          "name": `${req.body.orgName}`,
+          "user_id": `${req.session.passport.user.userId}`,
+          "orgabbrev": `${req.body.orgAbrev}`
+        })
+        .limit(1)
+        .then((org_data) => {
+          res.send(org_data);
+        })
+        .catch((err)=>{
+          if(err) throw err;
+        })
       })
       .catch((err)=>{
         console.log(err);

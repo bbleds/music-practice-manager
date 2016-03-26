@@ -11,7 +11,7 @@ app.controller("mainCtrl", ["$http", function($http){
       const stringedData = JSON.stringify(data);
       $http.post(`/api/organization`, stringedData)
       .then(function successCallback(response) {
-        self.userOrgs.push({"name":name, "orgdesc": desc})
+        self.userOrgs.push(response.data[0])
         }, function errorCallback(response) {
           console.log(response);
         });
