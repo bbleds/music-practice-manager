@@ -7,7 +7,7 @@
         <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#confirmPracticeDeleteModal" ng-click="single.setSelectedPractice(practice)">Delete</button>
         <p>{{practice.description}}</p>
           <a href="#/{{single.orgId}}/addpractice/{{practice.event_id}}"><button class="btn btn-lg btn-primary">Edit</button></a>
-          <button class="btn btn-lg btn-primary">View</button>
+          <a href="#/organization/{{single.orgAbrev}}"><button class="btn btn-lg btn-primary">View</button></a>
       </div>
     </div>
   </div>

@@ -9,8 +9,6 @@ app.controller("nonUserCtrl", ["$http", "$stateParams", function($http,$statePar
     $http.get(`/api/song/${practice.event_id}`)
     .then((songs)=>{
       self.practiceSongs = songs;
-      console.log("songs are");
-      console.log(songs);
     });
   };
 

@@ -1,6 +1,7 @@
 "use strict";
 app.controller("singleOrgCtrl", ["$http", "$state", "$stateParams","lodash", function($http, $state, $stateParams, _){
   const self = this;
+  self.orgAbrev = $stateParams.abrev;
   self.orgId = $stateParams.orgId;
   $http.get(`/api/${self.orgId}/practice`)
   .then((data) =>{
