@@ -27,6 +27,19 @@ router.get("/main", (req, res) =>{
 router.use(require("./api"));
 // login and register
 router.use(require("./auth"));
+// non user view
+router.get("/organization/:abbrev", (req, res)=>{
+  res.sendFile(path.resolve('public/html/non-user.html'));
+})
+
+// Catch all
+router.get("/*", (req, res)=>{
+  if(req.session.passport){
+    res.sendFile(path.resolve('public/html/main-backend.html'));
+  } else {
+    res.redirect("/");
+  }
+});
 
 
 module.exports = router;
