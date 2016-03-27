@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="jumbotron">
         <input class="form-control" ng-model="add.title" placeholder="Practice Title" type="text" name="practiceTitle"/>
-        <textarea class="form-control" ng-model="add.description" placeholder="Practice Description" type="text" name="practiceDescription"></textarea>
+        <textarea rows="5" class="form-control" ng-model="add.description" placeholder="Practice Description" type="text" name="practiceDescription"></textarea>
         <button type="button" class="btn btn-primary" ng-show="add.editMode" ng-click="add.editPractice(add.title, add.description)">Save Edited Practice</button>
         <button type="button" class="btn btn-primary" ng-hide="add.editMode" ng-click="add.addPractice(add.title,add.description)">Save Practice</button>
       </div>
@@ -19,7 +19,7 @@
       <button class="btn btn-primary">Add Song</button>
       <div class="jumbotron">
         <input class="form-control" placeholder="Song Title" type="text" ng-model="add.songTitle" name="songTitle"/>
-        <textarea class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.songInfo" name="songInfo"></textarea>
+        <textarea rows="5" class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.songInfo" name="songInfo"></textarea>
         <input class="form-control" placeholder="Link To Song" type="text" ng-model="add.songLink" name="songLink"/>
         <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.songPdf" name="songPdf"/>
         <button type="button" class="btn btn-primary" ng-click="add.saveSong(add.songTitle,add.songLink,add.songPdf,add.songInfo)">Save Song</button>
@@ -60,7 +60,7 @@
         </div>
           <div class="modal-body">
             <input class="form-control" placeholder="Song Title" type="text" ng-model="add.editSongTitle" name="songTitle"/>
-            <textarea class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.editSongInfo" name="songInfo"></textarea>
+            <textarea rows="5" class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.editSongInfo" name="songInfo"></textarea>
             <input class="form-control" placeholder="Link To Song" type="text" ng-model="add.editSongLink" name="songLink"/>
             <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.editSongPdf" name="songPdf"/>
           </div>

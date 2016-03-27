@@ -1,13 +1,18 @@
 <div class="container-fluid" ng-controller="singleOrgCtrl as single">
   <div class="row">
-    <div class="col-md-12">
-      <a href="#/{{single.orgId}}/addpractice"><button class="btn btn-lg">+</button></a>
-      <div class="jumbotron" ng-repeat="practice in single.currentPractices">
+    <div id="single-organization" class="col-md-12">
+      <h1 class="main-header">Practices for {{single.orgAbrev}}</h1>
+      <a href="#/{{single.orgId}}/addpractice"><button class="btn btn-lg bleds-btn addPractice">Add New Practice</button></a>
+      <hr />
+      <div class="bleds-output" ng-repeat="practice in single.currentPractices">
         <h1>{{practice.title}}</h1>
-        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#confirmPracticeDeleteModal" ng-click="single.setSelectedPractice(practice)">Delete</button>
+        <button class="btn btn-lg btn-primary delete bleds-btn" data-toggle="modal" data-target="#confirmPracticeDeleteModal" ng-click="single.setSelectedPractice(practice)">Delete</button>
         <p>{{practice.description}}</p>
-          <a href="#/{{single.orgId}}/addpractice/{{practice.event_id}}"><button class="btn btn-lg btn-primary">Edit</button></a>
-          <a href="/organization/{{single.orgAbrev}}" target="_blank"><button class="btn btn-lg btn-primary">View</button></a>
+        <hr />
+        <div class="bleds-footer">
+          <a href="#/{{single.orgId}}/addpractice/{{practice.event_id}}"><button class="btn btn-lg btn-primary bleds-btn">Edit</button></a>
+          <a href="/organization/{{single.orgAbrev}}" target="_blank"><button class="btn btn-lg btn-primary bleds-btn">View</button></a>
+        </div>
       </div>
     </div>
   </div>
@@ -23,7 +28,7 @@
         </div>
           <div class="modal-body">
             <button type="button" class="btn btn-default" ng-click="single.deletePractice()" data-dismiss="modal">Yes</button>
-            <button type="button" class="btn btn-default">No</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
           </div>
           <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
