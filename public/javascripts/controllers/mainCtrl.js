@@ -4,7 +4,7 @@ app.controller("mainCtrl", ["$http", function($http){
     const self = this;
     self.addOrganization = (name, abrev, desc) => {
       const data = {
-        "orgName" : name.toLowerCase(),
+        "orgName" : name,
         "orgAbrev": abrev.toLowerCase(),
         "orgDesc": desc
       };

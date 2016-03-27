@@ -1,12 +1,22 @@
 <div class="container-fluid" ng-controller="mainCtrl as main">
   <div class="row">
     <div class="col-md-12">
-      <button class="btn btn-lg" data-toggle="modal" data-target="#addOrganizationModal">+</button>
-      <div class="jumbotron" ng-repeat="organization in main.userOrgs">
-        <h3>{{organization.name}}</h3>
-        <h3>{{organization.orgdesc}}</h3>
-        <a href="#/org/{{organization.organization_id}}/{{organization.orgabbrev}}"><button class="btn btn-lg btn-primary">Manage</button></a>
-        <button type="button" class="btn btn-lg btn-primary" ng-click="main.selectOrg(organization)" data-target="#DeleteOrganizationModal" data-toggle="modal">Delete</button>
+      <h1 class="main-header">My Organizations</h1>
+      <button id="addOrgBtn" class="btn btn-lg" data-toggle="modal" data-target="#addOrganizationModal">Add New Organization</button>
+      <hr/>
+      <div class="bleds-output" ng-repeat="organization in main.userOrgs">
+        <div class="bleds-header">
+          <h3>{{organization.name}}</h3>
+        </div>
+          <div class="bleds-body">
+            <h3>{{organization.orgdesc}}</h3>
+            <a href="#/org/{{organization.organization_id}}/{{organization.orgabbrev}}">
+            <div class="bleds-footer">
+              <hr />
+              <button class="btn btn-lg btn-primary">Manage</button></a>
+              <button type="button" class="btn btn-lg btn-primary" ng-click="main.selectOrg(organization)" data-target="#DeleteOrganizationModal" data-toggle="modal">Delete</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

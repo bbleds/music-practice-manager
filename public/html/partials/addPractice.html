@@ -19,7 +19,7 @@
       <button class="btn btn-primary">Add Song</button>
       <div class="jumbotron">
         <input class="form-control" placeholder="Song Title" type="text" ng-model="add.songTitle" name="songTitle"/>
-        <input class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.songInfo" name="songInfo"/>
+        <textarea class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.songInfo" name="songInfo"></textarea>
         <input class="form-control" placeholder="Link To Song" type="text" ng-model="add.songLink" name="songLink"/>
         <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.songPdf" name="songPdf"/>
         <button type="button" class="btn btn-primary" ng-click="add.saveSong(add.songTitle,add.songLink,add.songPdf,add.songInfo)">Save Song</button>

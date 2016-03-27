@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "bower": "bower"
+    "bower": "bower",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -34,5 +35,12 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-watch": "^4.3.5"
   }
 }
