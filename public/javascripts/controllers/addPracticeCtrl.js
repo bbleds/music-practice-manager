@@ -1,7 +1,18 @@
  'use strict';
 
-app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($http, $stateParams, $state){
+app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", "ngNotify", function($http, $stateParams, $state, ngNotify){
   const self = this;
+
+  ngNotify.config({
+    theme: 'pure',
+    position: 'bottom',
+    duration: 5000,
+    type: 'info',
+    sticky: false,
+    button: true,
+    html: false
+  })
+
   if($stateParams.eventId){
     // get events details, and when posting, change details on it
     $http.get(`/api/${$stateParams.orgId}/practice/${$stateParams.eventId}`)
@@ -24,6 +35,7 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     };
     $http.post('/api/practice', data)
     .then((data)=>{
+      ngNotify.set("Practice saved successfully");
       const orgId = data.data[0].org_id;
       const eventId = data.data[0].event_id;
       window.location = `${window.location.hash}/${eventId}`;
@@ -39,6 +51,7 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
     $http.post(`/api/${$stateParams.orgId}/practice/${$stateParams.eventId}`, data)
     .then((data)=>{
       if(data.data === "successful"){
+        ngNotify.set("Practice edited successfully");
         console.log("edited successfully");
       }
     });
@@ -59,6 +72,7 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
       self.songInfo="";
       self.songLink="";
       self.songPdf="";
+      ngNotify.set("Added song successfully");
     });
   };
   self.selectSong = (song)=>{
@@ -78,6 +92,7 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
       "event_id": $state.params.eventId
     };
     $http.put("/api/song", data)
+    ngNotify.set("Edited song successfully");
     const updatedSongs = [];
     self.currentSongs.map((item)=>{
       if(item.title === self.selectedSong.title && item.song_info === self.selectedSong.song_info){
@@ -99,6 +114,7 @@ app.controller('addPracticeCtrl', ['$http', "$stateParams", "$state", function($
       method: "DELETE",
       headers: {delparams: JSON.stringify(song)}
     });
+    ngNotify.set("Deleted song successfully");
     const remainingSongs=[];
     self.currentSongs.map((item)=>{
       if(item.title !== song.title){

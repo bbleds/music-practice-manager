@@ -3,14 +3,14 @@
 app.controller("mainCtrl", ["$http", "ngNotify", function($http, ngNotify){
     const self = this;
     ngNotify.config({
-    theme: 'pure',
-    position: 'top',
-    duration: 5000,
-    type: 'info',
-    sticky: false,
-    button: true,
-    html: false
-})
+      theme: 'pure',
+      position: 'bottom',
+      duration: 5000,
+      type: 'info',
+      sticky: false,
+      button: true,
+      html: false
+    })
     self.addOrganization = (name, abrev, desc) => {
       // validate abbreviation
       if(abrev.match(/[^a-z0-9]/g) !== null){
