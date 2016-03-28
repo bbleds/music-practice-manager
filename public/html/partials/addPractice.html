@@ -1,28 +1,40 @@
-<div class="container-fluid" ng-controller="addPracticeCtrl as add">
+<div id="add-practice-container" class="container-fluid" ng-controller="addPracticeCtrl as add">
   <div class="row">
     <div class="col-md-12">
+      <h1 class="bleds-header">Add Practice</h1>
+      <hr />
       <div class="jumbotron">
-        <input class="form-control" ng-model="add.title" placeholder="Practice Title" type="text" name="practiceTitle"/>
-        <textarea rows="5" class="form-control" ng-model="add.description" placeholder="Practice Description" type="text" name="practiceDescription"></textarea>
-        <button type="button" class="btn btn-primary" ng-show="add.editMode" ng-click="add.editPractice(add.title, add.description)">Save Edited Practice</button>
-        <button type="button" class="btn btn-primary" ng-hide="add.editMode" ng-click="add.addPractice(add.title,add.description)">Save Practice</button>
+        <label for="practiceTitle">Practice Title</label>
+        <input class="form-control" ng-model="add.title" placeholder="E.g., Midweek Practice - Wednesday, April 27, 2020" type="text" name="practiceTitle"/>
+        <label for="practiceDescription">Practice Description and Information</label>
+        <textarea rows="5" class="form-control" ng-model="add.description" placeholder="E.g., Singer details, musician details, keys, etc." type="text" name="practiceDescription"></textarea>
+        <button type="button" class="btn btn-primary bleds-btn" ng-show="add.editMode" ng-click="add.editPractice(add.title, add.description)">Save Edited Practice</button>
+        <button type="button" class="btn btn-primary bleds-btn" ng-hide="add.editMode" ng-click="add.addPractice(add.title,add.description)">Save Practice</button>
       </div>
-      <div class="jumbotron" ng-repeat="song in add.currentSongs">
+      <h1 class="bleds-header">Current Songs</h1>
+      <hr />
+      <h3 ng-if="add.currentSongs.length === 0">You haven't added any songs to this practice</h3>
+      <div class="jumbotron current-song" ng-repeat="song in add.currentSongs">
         <h2>{{song.title}}</h2>
-        <h3>{{song.song_info}}</h3>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editSongModal" ng-click="add.selectSong(song)">Edit</button>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#confirmSongDeleteModal" ng-click="add.selectSong(song)">Delete</button>
-        <a href="{{song.link}}" target="_blank"><button class="btn btn-primary">View Song</button></a>
-        <a href="{{song.pdf_ref}}" target="_blank"><button class="btn btn-primary">View Song pdf</button></a>
+        <p>{{song.song_info}}</p>
+        <button type="button" class="btn bleds-btn btn-default" data-toggle="modal" data-target="#editSongModal" ng-click="add.selectSong(song)">Edit</button>
+        <button type="button" class="btn bleds-btn btn-default delete" data-toggle="modal" data-target="#confirmSongDeleteModal" ng-click="add.selectSong(song)">Delete</button>
+        <a href="{{song.link}}" target="_blank"><button class="btn bleds-btn btn-primary">View Song</button></a>
+        <a href="{{song.pdf_ref}}" target="_blank"><button class="btn bleds-btn btn-primary">View Song pdf</button></a>
       </div>
 
-      <button class="btn btn-primary">Add Song</button>
+      <h1 class="bleds-header">Add New Song</h1>
+      <hr/>
       <div class="jumbotron">
+        <label for="songTitle">Song Title</label>
         <input class="form-control" placeholder="Song Title" type="text" ng-model="add.songTitle" name="songTitle"/>
+        <label for="songInfo">Song Details and Information</label>
         <textarea rows="5" class="form-control" placeholder="Additional Song Information" type="text" ng-model="add.songInfo" name="songInfo"></textarea>
+        <label for="songLink">Link to Song</label>
         <input class="form-control" placeholder="Link To Song" type="text" ng-model="add.songLink" name="songLink"/>
+        <label for="songPdf">Link to Song Pdf or Chord Chart</label>
         <input class="form-control" placeholder="Link To Pdf" type="text" ng-model="add.songPdf" name="songPdf"/>
-        <button type="button" class="btn btn-primary" ng-click="add.saveSong(add.songTitle,add.songLink,add.songPdf,add.songInfo)">Save Song</button>
+        <button type="button" class="btn btn-primary bleds-btn" ng-click="add.saveSong(add.songTitle,add.songLink,add.songPdf,add.songInfo)">Save Song</button>
       </div>
     </div>
   </div>
@@ -38,7 +50,7 @@
         </div>
           <div class="modal-body">
             <button type="button" class="btn btn-default" ng-click="add.deleteSong(add.selectedSong)" data-dismiss="modal">Yes</button>
-            <button type="button" class="btn btn-default">No</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
           </div>
           <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -66,7 +78,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" ng-click="add.editSong(add.editSongTitle,add.editSongInfo,add.editSongLink,add.editSongPdf)" data-dismiss="modal">Save</button>
-            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
       </form>
       </div>
