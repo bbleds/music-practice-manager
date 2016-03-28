@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <title>Music Practice Manager</title>
     <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/non-user.css" />
   </head>
   <body ng-app="non-user-view">
     <div class="container-fluid" ng-controller="nonUserCtrl as nonUser">
       <div class="row">
         <div class="col-md-12">
-          <div class="dropdown">
+          <div id="practice-select" class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Select Practice
             <span class="caret"></span>
@@ -19,16 +20,22 @@
           </ul>
         </div>
 
-          <h1>{{nonUser.organization}}</h1>
-          <h1>{{nonUser.selectedPractice.title}}</h1>
-          <p>{{nonUser.selectedPractice.description || "No description provided"}}</p>
+          <h1 id="org-name">{{nonUser.organization}}</h1>
+          <hr />
+          <h1 id="practice-title">Practice: {{nonUser.selectedPractice.title}}</h1>
+          <p id="practice-info">{{"Practice Information: "+ nonUser.selectedPractice.description || "No description provided"}}</p>
+          <hr />
+          <h1 id="song-header">Songs</h1>
+          <h2 class="no-songs" ng-if="nonUser.practiceSongs.data.length === 0">No songs have been added to this practice</h2>
           <div class="jumbotron" ng-repeat="song in nonUser.practiceSongs.data">
             <h3>{{song.title}}</h3>
             <p>
               {{song.song_info}}
             </p>
-            <a href="{{song.link}}"><button class="btn btn-primary">Online Link</button></a>
-            <a href="{{song.pdf_ref}}"><button class="btn btn-primary">Download Pdf</button></a>
+            <div class="song-footer">
+              <a href="{{song.link}}" target="_blank"><button class="btn btn-primary">Online Link</button></a>
+              <a href="{{song.pdf_ref}}" target="_blank"><button class="btn btn-primary">Music / Chord Chart</button></a>
+            </div>
           </div>
       </div>
 
