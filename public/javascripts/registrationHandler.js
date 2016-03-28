@@ -9,6 +9,7 @@ $("#registerSubmit").click(
       success: function (data) {
         $("#registerModal").modal('hide');
         $("#loginEmail").val(data.email);
+        $("#statusMessage").fadeIn(800);
         $("#statusMessage").html(data.status);
         $("#registerButton").blur();
         $("#loginPassword").focus();
