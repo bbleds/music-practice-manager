@@ -5,7 +5,7 @@ app.controller("mainCtrl", ["$http", "ngNotify", function($http, ngNotify){
     ngNotify.config({
     theme: 'pure',
     position: 'top',
-    duration: 4000,
+    duration: 5000,
     type: 'info',
     sticky: false,
     button: true,
@@ -51,6 +51,7 @@ app.controller("mainCtrl", ["$http", "ngNotify", function($http, ngNotify){
             remainingOrgs.push(item)
           }
         })
+        ngNotify.set("Deleted organization successfully");
         self.userOrgs = remainingOrgs;
       })
 
