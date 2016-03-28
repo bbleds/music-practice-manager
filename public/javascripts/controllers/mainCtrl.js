@@ -1,7 +1,16 @@
 "use strict";
 
-app.controller("mainCtrl", ["$http", function($http){
+app.controller("mainCtrl", ["$http", "ngNotify", function($http, ngNotify){
     const self = this;
+    ngNotify.config({
+    theme: 'pure',
+    position: 'top',
+    duration: 4000,
+    type: 'info',
+    sticky: false,
+    button: true,
+    html: false
+})
     self.addOrganization = (name, abrev, desc) => {
       const data = {
         "orgName" : name,
@@ -11,10 +20,16 @@ app.controller("mainCtrl", ["$http", function($http){
       const stringedData = JSON.stringify(data);
       $http.post(`/api/organization`, stringedData)
       .then(function successCallback(response) {
-        self.userOrgs.push(response.data[0])
-        }, function errorCallback(response) {
-          console.log(response);
-        });
+        console.log(response);
+        if(response.data === "This already exists"){
+          ngNotify.set("An organization with this abbreviation or name already exists, please try again.", {
+            type: "warn"
+          });
+        } else {
+          self.userOrgs.push(response.data[0]);
+          ngNotify.set("Added organization successfully");
+        }
+      });
     };
 
     self.selectOrg = (organization) => {
