@@ -12,6 +12,20 @@ app.controller("mainCtrl", ["$http", "ngNotify", function($http, ngNotify){
     html: false
 })
     self.addOrganization = (name, abrev, desc) => {
+      // validate abbreviation
+      if(abrev.match(/[^a-z0-9]/g) !== null){
+        ngNotify.set("Invalid abbreviation: organization abbreviations must be lowercase letters or numbers and cannot contain spaces, please try again",{
+          duration: 10000,
+          type: "warn"
+        });
+      // validate name
+      } else if (name === undefined || name === "" || name ===" "){
+        ngNotify.set("No organization name was entered or the name was invalid, please try again",{
+          duration: 10000,
+          type: "warn"
+        });
+      } else {
+        abrev = abrev.trim();
       const data = {
         "orgName" : name,
         "orgAbrev": abrev.toLowerCase(),
@@ -30,6 +44,7 @@ app.controller("mainCtrl", ["$http", "ngNotify", function($http, ngNotify){
           ngNotify.set("Added organization successfully");
         }
       });
+      }
     };
 
     self.selectOrg = (organization) => {

@@ -29,11 +29,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add new organization</h4>
+          <h4 class="modal-title">Add New Organization</h4>
         </div>
           <div class="modal-body">
+              <label class="main-label" for="organizationName">Organization Name</label>
               <input id="OrganizationName" ng-model="main.organizationName" class="form-control" placeholder="Organization Name" type="text" name="organizationName"/>
+              <label class="main-label" for="organizationAbrev">Organization Abbreviation</label>
+              <label>(Abbreviations must be lowercase and cannot contain spaces)</label>
               <input id="OrganizationAbreviation" ng-model="main.organizationAbrev" class="form-control" placeholder="Organization abbreviation" type="text" name="organizationAbrev"/>
+              <label class="main-label" for="organizationDesc">Organization Description</label>
               <input id="OrganizationDesc" ng-model="main.organizationDesc" class="form-control" placeholder="Organization Description" type="text" name="organizationDesc"/>
           </div>
           <div class="modal-footer">
