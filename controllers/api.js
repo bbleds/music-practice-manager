@@ -311,5 +311,10 @@ const delParams = JSON.parse(req.headers.delparams);
   });
 };
 
+exportObject.logoutUser = (req, res) => {
+  req.session.passport = undefined;
+  res.send("logged out successfully");
+};
+
 
 module.exports = exportObject;

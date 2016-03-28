@@ -19,6 +19,7 @@ router.delete("/api/song", apiCtrl.deleteSong);
 router.get("/api/:orgId/practice/:eventId", apiCtrl.getPractice);
 router.post("/api/:orgId/practice/:eventId", apiCtrl.editPractice);
 router.delete("/api/practice", apiCtrl.deletePractice);
+router.get("/api/logout", apiCtrl.logoutUser);
 
 
 module.exports = router;
