@@ -1,6 +1,15 @@
 "use strict";
-app.controller("singleOrgCtrl", ["$http", "$state", "$stateParams","lodash", function($http, $state, $stateParams, _){
+app.controller("singleOrgCtrl", ["$http", "$state", "$stateParams","lodash","ngNotify", function($http, $state, $stateParams, _, ngNotify){
   const self = this;
+  ngNotify.config({
+    theme: 'pure',
+    position: 'bottom',
+    duration: 5000,
+    type: 'info',
+    sticky: false,
+    button: true,
+    html: false
+  });
   self.orgAbrev = $stateParams.abrev;
   self.orgId = $stateParams.orgId;
   $http.get(`/api/${self.orgId}/practice`)
@@ -21,6 +30,7 @@ app.controller("singleOrgCtrl", ["$http", "$state", "$stateParams","lodash", fun
       headers: {delparams: JSON.stringify(self.selectedPractice)}
     })
     .then(()=>{
+      ngNotify.set("Deleted practice successfully");
       self.currentPractices.map((item)=>{
         if(item.title !== self.selectedPractice.title){
           remainingPractices.push(item);
