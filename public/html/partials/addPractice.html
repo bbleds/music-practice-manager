@@ -13,7 +13,7 @@
       </div>
       <h1 class="bleds-header">Current Songs</h1>
       <hr />
-      <h3 ng-if="add.currentSongs.length === 0">You haven't added any songs to this practice</h3>
+      <h3 ng-if="add.currentSongs.length === 0 || add.currentSongs === undefined">You haven't added any songs to this practice</h3>
       <div class="jumbotron current-song" ng-repeat="song in add.currentSongs">
         <h2>{{song.title}}</h2>
         <p>{{song.song_info}}</p>
